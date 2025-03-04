@@ -6,9 +6,9 @@ metadata:
   name: authorino-operator
   namespace: openshift-operators
 spec:
-  channel: stable
+  channel: tech-preview-v1
   installPlanApproval: Automatic
   name: authorino-operator
-  source: community-operators
+  source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: authorino-operator.v0.16.0
+  startingCSV: authorino-operator.v1.1.1

@@ -1,7 +1,7 @@
 apiVersion: user.openshift.io/v1
 kind: Group
 metadata:
-  name: odh-admins
+  name: rhods-admins
 users:
 - b64:system:admin
 - b64:kube:admin

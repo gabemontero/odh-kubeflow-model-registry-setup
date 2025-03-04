@@ -45,7 +45,7 @@ oc wait --for=jsonpath='{.status.phase}'=Succeeded "$SERVERLESS" -n openshift-se
 
 oc apply -f ./opendatahub-subscription.yaml
 while true; do
-	oc get csv -o name -n openshift-operators | grep opendatahub > hub.txt
+	oc get csv -o name -n redhat-ods-operator | grep rhods-operator > hub.txt
 	if [ -s hub.txt ]; then
 		export OPENDATAHUB=$(cat hub.txt)
 		echo "hub csv is ${OPENDATAHUB}"
@@ -55,7 +55,7 @@ while true; do
 		sleep 5
 	fi
 done
-oc wait --for=jsonpath='{.status.phase}'=Succeeded "$OPENDATAHUB" -n openshift-operators --timeout=300s
+oc wait --for=jsonpath='{.status.phase}'=Succeeded "$OPENDATAHUB" -n redhat-ods-operator --timeout=300s
 
 
 
