@@ -8,6 +8,7 @@ oc wait --for=condition=available deployment/model-registry-db --timeout=5m
 oc apply -f odh-model-registrires-ns.yaml
 
 oc project odh-model-registries
+oc apply -k ./rhoai-model-catalog-rest -n odh-model-registries
 oc apply -f registry.yaml
 oc wait --for=condition=available modelregistry.modelregistry.opendatahub.io/modelregistry-public --timeout=5m
 
