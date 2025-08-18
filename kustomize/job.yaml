@@ -62,11 +62,20 @@ spec:
               wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-rbac.yaml || exit
               wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-unmanaged-sources.yaml || exit 
               
-              mkdir rhoai-model-catalog
-              mv kustomization.yaml rhoai-model-catalog
-              mv model-catalog-configmap.yaml rhoai-model-catalog
-              mv model-catalog-rbac.yaml rhoai-model-catalog
-              mv model-catalog-unmanaged-sources.yaml rhoai-model-catalog
+              mkdir rhoai-model-catalog-dashboard
+              mv kustomization.yaml rhoai-model-catalog-dashboard
+              mv model-catalog-configmap.yaml rhoai-model-catalog-dashboard
+              mv model-catalog-rbac.yaml rhoai-model-catalog-dashboard
+              mv model-catalog-unmanaged-sources.yaml rhoai-model-catalog-dashboard
+
+              wget https://raw.githubusercontent.com/gabemontero/model-registry/refs/heads/temp-model-catalog-populate-configmap-only/manifests/kustomize/options/catalog/kustomization.yaml || exit
+              wget https://raw.githubusercontent.com/gabemontero/model-registry/refs/heads/temp-model-catalog-populate-configmap-only/manifests/kustomize/options/catalog/sources.yaml || exit
+              wget https://raw.githubusercontent.com/gabemontero/model-registry/refs/heads/temp-model-catalog-populate-configmap-only/manifests/kustomize/options/catalog/sample-catalog.yaml || exit
+
+              mkdir rhoai-model-catalog-rest
+              mv kustomization.yaml rhoai-model-catalog-rest
+              mv sources.yaml rhoai-model-catalog-rest
+              mv sample-catalog.yaml rhoai-model-catalog-rest
               
               wget https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
               mv jq-linux-amd64 jq
@@ -83,7 +92,7 @@ spec:
               
               oc project opendatahub
               oc patch odhdashboardconfig.opendatahub.io odh-dashboard-config -n opendatahub --type merge -p '{"spec": {"dashboardConfig": {"disableModelCatalog": false}}}'
-              oc apply -k ./rhoai-model-catalog
+              oc apply -k ./rhoai-model-catalog-dashboard
 
           image: registry.redhat.io/openshift4/ose-cli-rhel9:v4.16
 
