@@ -1,12 +1,6 @@
 apiVersion: dscinitialization.opendatahub.io/v1
 kind: DSCInitialization
 metadata:
-  labels:
-    app.kubernetes.io/created-by: opendatahub-operator
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/name: dscinitialization
-    app.kubernetes.io/part-of: opendatahub-operator
   name: default-dsci
 spec:
   applicationsNamespace: opendatahub
@@ -14,7 +8,20 @@ spec:
     logmode: production
   monitoring:
     managementState: Managed
+    metrics:
+      resources:
+        cpulimit: 500m
+        cpurequest: 100m
+        memorylimit: 512Mi
+        memoryrequest: 256Mi
+      storage:
+        retention: 1d
+        size: 5Gi
     namespace: opendatahub
+    traces:
+      sampleRatio: "0.1"
+      storage:
+        backend: pv
   serviceMesh:
     auth:
       audiences:
