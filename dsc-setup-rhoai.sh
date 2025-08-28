@@ -2,10 +2,13 @@
 while true; do
   oc get dsci default-dsci > dsci.txt
   if [ -s dsci.txt ]; then
-    echo "dsci is present"
+    echo "dsci is present, turning off istio"
+    oc apply -f default-dsci-rhoai.yaml
+    sleep 5
     break
   else
     echo "still waiting on dsci"
+    sleep 2
   fi
 done
 oc wait --for=jsonpath='{.status.phase}'=Ready dsci/default-dsci --timeout=300s
