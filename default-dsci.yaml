@@ -23,14 +23,11 @@ spec:
       storage:
         backend: pv
   serviceMesh:
-    auth:
-      audiences:
-      - https://kubernetes.default.svc
     controlPlane:
       metricsCollection: Istio
       name: data-science-smcp
       namespace: istio-system
-    managementState: Managed
+    managementState: Removed    
   trustedCABundle:
     customCABundle: ""
     managementState: Managed
