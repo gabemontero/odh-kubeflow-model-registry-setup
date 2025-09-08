@@ -11,4 +11,6 @@ oc apply -f rhods-admins.yaml
 
 # should not be needed if your are on a cluster with cert mgmt like with ROSA
 oc set env  deployment/odh-model-controller -n redhat-ods-applications MR_SKIP_TLS_VERIFY=true
-oc wait --for=jsonpath='{.status.observedGeneration}'=2 deployment/odh-model-controller -n redhat-ods-applications --timeout=300s
+sleep 60
+
+oc get pods -n redhat-ods-applications
