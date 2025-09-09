@@ -19,8 +19,8 @@ sleep 60
 
 oc get pods -n opendatahub
 
-oc apply -f default-model-catalog-cm.yaml
-oc apply -f model-catalog-sources-cm.yaml
+# oc apply -f default-model-catalog-cm.yaml
+# oc apply -f model-catalog-sources-cm.yaml
 
-oc get pods -o name | grep catalog | xargs -l -r oc delete 
+# oc get pods -o name | grep catalog | xargs -l -r oc delete 
 
