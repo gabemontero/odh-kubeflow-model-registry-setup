@@ -20,7 +20,16 @@ sleep 60
 oc get pods -n opendatahub
 
 # oc apply -f default-model-catalog-cm.yaml
-# oc apply -f model-catalog-sources-cm.yaml
 
-# oc get pods -o name | grep catalog | xargs -l -r oc delete 
+oc scale --replicas=0 deployment/model-registry-operator-controller-manager -n opendatahub
+sleep 45
+oc delete cm default-model-catalog -n odh-model-registries
+oc create configmap default-model-catalog --from-file=default-catalog.yaml=./test-yaml-catalog.yaml -n odh-model-registries
+oc apply -f model-catalog-sources-cm.yaml
+oc get pods -o name -n odh-model-registries | grep catalog | xargs -l -r oc delete -n odh-model-registries
+oc scale --replicas=1 deployment/model-registry-operator-controller-manager -n opendatahub
+sleep 45
+oc get pods -n opendatahub
+oc get pods -n odh-model-registries
+oc get routes -n odh-model-registries
 
