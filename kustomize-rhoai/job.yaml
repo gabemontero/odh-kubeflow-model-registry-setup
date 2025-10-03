@@ -57,10 +57,10 @@ spec:
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/default-dsci-rhoai.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/model-registry-setup-rhoai.sh || exit
               
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/kustomization.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-configmap.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-rbac.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.34.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-unmanaged-sources.yaml || exit 
+              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/kustomization.yaml || exit
+              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-configmap.yaml || exit
+              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-rbac.yaml || exit
+              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-unmanaged-sources.yaml || exit 
               
               mkdir rhoai-model-catalog
               mv kustomization.yaml rhoai-model-catalog
