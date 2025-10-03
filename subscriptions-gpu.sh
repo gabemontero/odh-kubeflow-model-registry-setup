@@ -15,8 +15,6 @@ while true; do
 done
 oc wait --for=jsonpath='{.status.phase}'=Succeeded "$NFD" -n openshift-nfd --timeout=600s
 
-./nfd-setup.sh
-
 oc apply -f ./kmm-ns.yaml
 oc create -f ./kmm-operatorgroup.yaml
 oc apply -f ./kmm-subscription.yaml
