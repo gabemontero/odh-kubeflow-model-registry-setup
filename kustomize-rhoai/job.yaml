@@ -57,17 +57,6 @@ spec:
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/default-dsci-rhoai.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/model-registry-setup-rhoai.sh || exit
               
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/kustomization.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-configmap.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-rbac.yaml || exit
-              wget https://raw.githubusercontent.com/opendatahub-io/odh-dashboard/refs/tags/v2.37.0/manifests/rhoai/shared/apps/model-catalog/model-catalog-unmanaged-sources.yaml || exit 
-              
-              mkdir rhoai-model-catalog
-              mv kustomization.yaml rhoai-model-catalog
-              mv model-catalog-configmap.yaml rhoai-model-catalog
-              mv model-catalog-rbac.yaml rhoai-model-catalog
-              mv model-catalog-unmanaged-sources.yaml rhoai-model-catalog
-              
               wget https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
               mv jq-linux-amd64 jq
               chmod +x jq
@@ -83,7 +72,6 @@ spec:
 
               oc project redhat-ods-applications
               oc patch odhdashboardconfig.opendatahub.io odh-dashboard-config -n redhat-ods-applications --type merge -p '{"spec": {"dashboardConfig": {"disableModelCatalog": false}}}'
-              oc apply -k ./rhoai-model-catalog
 
           image: registry.redhat.io/openshift4/ose-cli-rhel9:v4.16
 
