@@ -1,0 +1,16 @@
+# remember to enable llamastack operator in DSC
+apiVersion: llamastack.io/v1alpha1
+kind: LlamaStackDistribution
+metadata:
+  name: my-llamastack
+spec:
+  replicas: 1
+  server:
+    distribution:
+      name: "rh-dev"
+    containerSpec:
+      port: 8321
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "1"

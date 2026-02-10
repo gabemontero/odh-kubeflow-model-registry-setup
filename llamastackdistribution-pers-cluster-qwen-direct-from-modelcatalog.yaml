@@ -1,0 +1,22 @@
+apiVersion: llamastack.io/v1alpha1
+kind: LlamaStackDistribution
+metadata:
+  name: my-llamastack
+  namespace: redhat-ods-applications
+spec:
+  replicas: 1
+  server:
+    containerSpec:
+      env:
+      - name: VLLM_URL
+        value: https://redhataiqwen3-8b-fp8-dynamic-ggmtest.apps.gmontero419.devcluster.openshift.com
+      - name: INFERENCE_MODEL
+        value: redhataiqwen3-8b-fp8-dynamic
+      name: llama-stack
+      port: 8321
+      resources:
+        requests:
+          cpu: "1"
+          memory: 2Gi
+    distribution:
+      name: rh-dev
